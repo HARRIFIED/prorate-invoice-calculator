@@ -32,21 +32,21 @@ export class Invoice {
     }
 }
 
-//Test
+//Example usage
 const invoice = new Invoice();
-// console.log(invoice.calculateInvoice(
-//     '2025-04-01',
-//     '2025-04-30',
-//     [
-//         {
-//             monthlyCost: 100,
-//             startUsageDate: '2025-04-01',
-//             endUsageDate: '2025-04-10'
-//         },
-//         {
-//             monthlyCost: 150,
-//             startUsageDate: '2025-04-11',
-//             endUsageDate: '2025-04-20'
-//         }
-//     ]
-// ))
+console.log(invoice.calculateInvoice({
+    startofBillingCycle: '2025-04-01',  
+    endofBillingCycle: '2025-04-30',
+    plansUsageInterval: [
+        {
+            monthlyCost: 100,
+            startUsageDate: '2025-04-01',
+            endUsageDate: '2025-04-10'
+        },
+        {
+            monthlyCost: 150,
+            startUsageDate: '2025-04-11',
+            endUsageDate: '2025-04-20'
+        }
+    ]
+}))

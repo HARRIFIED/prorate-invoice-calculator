@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "tsc && node dist/index.js"
   },
   "author": "Harrison Ikpefua",
   "license": "ISC",
