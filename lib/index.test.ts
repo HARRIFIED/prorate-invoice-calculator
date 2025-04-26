@@ -1,10 +1,11 @@
-const Invoice = require('./index');
+import { Invoice } from "./index"
+import { InvoiceType } from './types'
 
 /**
  * planUsage: {
  *  amount: number,
- *  startUsageDate: date;
- *  endUsageDate: date
+ *  startUsageDate: string | date;
+ *  endUsageDate: string | date
  * }
  * 
  * calculate(billingCycle, [planUsage]) {
@@ -36,9 +37,10 @@ describe("Calculates Invoice for prorated charges", () => {
             }
         ]
 
-        const invoiceNote = invoice.calculateInvoice(startofBillingCycle, endofBillingCycle, plansUsageInterval);
+        const invoiceNote = invoice.calculateInvoice({startofBillingCycle, endofBillingCycle, plansUsageInterval});
         expect(typeof invoiceNote).toBe('object');
-        expect(invoiceNote.plans).toContainEqual({ plan: 'Plan 1', amount: 100 }, { plan: 'Plan 2', amount: 150 });
+        expect(invoiceNote.plans).toContainEqual({ plan: 'Plan 1', amount: 100 });
+        expect(invoiceNote.plans).toContainEqual({ plan: 'Plan 2', amount: 150 });
         expect(invoiceNote.total).toBeCloseTo(250.0)
     })
 });
